@@ -1,0 +1,7 @@
+<h1><%= h(full_wiki_document.title) %></h1>
+<div>
+  <%= simple_format(full_wiki_document.body) %>
+</div>
+<div>
+  <%= link_to "Edit", edit_wiki_path(full_wiki_document) %>
+</div>

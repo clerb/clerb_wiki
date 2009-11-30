@@ -8,3 +8,4 @@ Feature: View a Wiki Document
     When I visit the wiki page for "MyDocument"
     Then I should see "MyDocument"
     And I should see "Lorem ipsum..."
+    
