@@ -5,6 +5,6 @@ Feature: View a Wiki Document
 
   Scenario: Viewing an Existing Document
     Given a wiki document titled "MyDocument" with body "Lorem ipsum..."
-    When I go to the wiki page for "MyDocument"
+    When I visit the wiki page for "MyDocument"
     Then I should see "MyDocument"
-      And I should see "Lorem ipsum..."
+    And I should see "Lorem ipsum..."

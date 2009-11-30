@@ -7,13 +7,10 @@ module NavigationHelpers
   #
   def path_to(page_name)
     case page_name
-
-    when /the homepage/
+    
+    when /the home\s?page/
       '/'
-
-    when /the wiki page for "([^"]*)"/
-      wiki_path $1
-
+    
     # Add more mappings here.
     # Here is a more fancy example:
     #
