@@ -1,7 +1,7 @@
 class WikiController < ApplicationController
   
   def index
-    @wiki_document = WikiDocument.last
+    @wiki_documents = WikiDocument.all(:order=>'updated_at DESC', :limit=>5)
   end
 
   def show
@@ -34,7 +34,18 @@ class WikiController < ApplicationController
       redirect_to wiki_path @wiki_document.title
     else
       flash[:notice] = "FAIL!"
-      render :new
+      render :edit
+    end
+  end
+  
+  def destroy
+    @wiki_document = WikiDocument.find(params[:id])
+    if @wiki_document.delete
+      flash[:notice] = "Document has been deleted!"
+      redirect_to root_path
+    else
+      flash[:notice] = "FAIL!"
+      render wiki_path @wiki_document.title
     end
   end
 

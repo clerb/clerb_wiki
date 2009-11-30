@@ -1,7 +1,11 @@
-<h1><%= h(full_wiki_document.title) %></h1>
+<h2><%= h(full_wiki_document.title) %></h2>
 <div>
   <%= simple_format(full_wiki_document.body) %>
 </div>
 <div>
-  <%= link_to "Edit", edit_wiki_path(full_wiki_document) %>
+  <%= link_to "Show", wiki_path(full_wiki_document.title) %> 
+  <%= link_to "Edit", edit_wiki_path(full_wiki_document) %> 
+  <%= link_to "Destroy", wiki_path(full_wiki_document), :method=>:delete,
+    :confirm=>"Are you sure?" %>
 </div>
+<hr />

@@ -4,7 +4,7 @@ describe WikiController, "routing" do
 
   specify { wiki_path("Foo").should == "/wiki/Foo" }
   
-  specify { wiki_path(WikiDocument.create!).should match /\/wiki\/(\d)+/ }
+  specify { wiki_path(WikiDocument.create!(:title=>"FooBar")).should match /\/wiki\/(\d)+/ }
   
   specify { wiki_path(1).should == "/wiki/1" }
 

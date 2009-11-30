@@ -1,1 +1,2 @@
-<%= render :partial=>"full_wiki_document", :object=> @wiki_document %>
+<h1>Recently Updated Documents (<%=pluralize @wiki_documents.count, "doc" %>)</h1>
+<%= render :partial=>"full_wiki_document", :collection => @wiki_documents %>
