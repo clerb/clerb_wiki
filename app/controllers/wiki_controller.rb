@@ -53,11 +53,14 @@ private
 
   helper_method :wiki_document
   def wiki_document
-    @wiki_document ||= if params[:version]
-                         WikiDocument.find_by_title(params[:id]).versions.number(params[:version])
-                       else
-                         WikiDocument.find_by_title(params[:id])
-                       end
+    return @wiki_document if @wiki_document
+
+    @wiki_document = WikiDocument.find_by_title(params[:id])
+    if params[:version]
+      version = @wiki_document.versions.number(params[:version])
+      if version then @wiki_document = version end
+    end
+    @wiki_document
   end
 
 end
