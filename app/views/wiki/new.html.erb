@@ -1,4 +1,4 @@
-<% form_for :wiki_document, :url=>wiki_index_path, :html=>{:method=>:post} do |f| %>
+<% form_for wiki_document do |f| %>
   <%= render :partial=> 'wiki_document_form', :object=> f %>
   <%= f.submit "Create Document" %>
 <% end %>

@@ -3,5 +3,5 @@ Given /^a wiki document titled "([^\"]*)" with body "([^\"]*)"$/ do |title, body
 end
 
 When /^I visit the wiki page for "([^\"]*)"$/ do |document_title|
-  visit wiki_path(document_title)
+  visit "/wiki/%s" % [document_title]
 end

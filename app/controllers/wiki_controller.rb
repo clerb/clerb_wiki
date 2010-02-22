@@ -1,11 +1,9 @@
 class WikiController < ApplicationController
 
   def index
-    @wiki_documents = WikiDocument.all(:order=>'updated_at DESC', :limit=>5)
   end
 
   def show
-    @wiki_document = WikiDocument.find_by_title(params[:id])
   end
 
   def new
@@ -13,14 +11,13 @@ class WikiController < ApplicationController
   end
 
   def edit
-    @wiki_document = WikiDocument.find_by_title(params[:id])
   end
 
   def create
     @wiki_document = WikiDocument.new(params[:wiki_document])
-    if @wiki_document.save
+    if wiki_document.save
       flash[:notice] = "Document has been created!"
-      redirect_to wiki_path @wiki_document.title
+      redirect_to wiki_document_path(wiki_document)
     else
       flash[:notice] = "FAIL!"
       render :new
@@ -28,10 +25,9 @@ class WikiController < ApplicationController
   end
 
   def update
-    @wiki_document = WikiDocument.find_by_title(params[:id])
-    if @wiki_document.update_attributes(params[:wiki_document])
+    if wiki_document.update_attributes(params[:wiki_document])
       flash[:notice] = "Document has been updated!"
-      redirect_to wiki_path @wiki_document.title
+      redirect_to wiki_document_path(wiki_document)
     else
       flash[:notice] = "FAIL!"
       render :edit
@@ -39,14 +35,25 @@ class WikiController < ApplicationController
   end
 
   def destroy
-    @wiki_document = WikiDocument.find_by_title(params[:id])
-    if @wiki_document.delete
+    if wiki_document.delete
       flash[:notice] = "Document has been deleted!"
       redirect_to root_path
     else
       flash[:notice] = "FAIL!"
-      render wiki_path @wiki_document.title
+      render wiki_document_path(wiki_document)
     end
+  end
+
+private
+
+  helper_method :wiki_documents
+  def wiki_documents
+    @wiki_documents ||= WikiDocument.all(:order=>'updated_at DESC', :limit=>5)
+  end
+
+  helper_method :wiki_document
+  def wiki_document
+    @wiki_document ||= WikiDocument.find_by_title(params[:id])
   end
 
 end

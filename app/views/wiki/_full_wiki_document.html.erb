@@ -3,9 +3,9 @@
   <%= simple_format(full_wiki_document.body) %>
 </div>
 <div>
-  <%= link_to "Show", wiki_path(full_wiki_document.title) %> 
-  <%= link_to "Edit", edit_wiki_path(full_wiki_document) %> 
-  <%= link_to "Destroy", wiki_path(full_wiki_document), :method=>:delete,
+  <%= link_to "Show", wiki_document_path(full_wiki_document) %> 
+  <%= link_to "Edit", edit_wiki_document_path(full_wiki_document) %> 
+  <%= link_to "Destroy", wiki_document_path(full_wiki_document), :method=>:delete,
     :confirm=>"Are you sure?" %>
 </div>
 <hr />

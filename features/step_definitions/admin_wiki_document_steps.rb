@@ -18,7 +18,7 @@ Given /^a document that I have authored in the past exists$/ do
 end
 
 When /^I edit the document$/ do
-  visit edit_wiki_path(WikiDocument.find_by_title("MyLove"))
+  visit "/wiki/MyLove/edit"
   fill_in :wiki_document_body, :with=>"Is Still Bacon."
   click_button "Update Document"
 end
