@@ -9,7 +9,16 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090901195237) do
+ActiveRecord::Schema.define(:version => 20100222044900) do
+
+  create_table "wiki_document_versions", :force => true do |t|
+    t.integer  "version"
+    t.integer  "wiki_document_id"
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "wiki_documents", :force => true do |t|
     t.string   "title"
