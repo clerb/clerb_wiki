@@ -6,10 +6,10 @@ describe WikiController do
   describe "#show" do
 
     before do
-      @wiki_document = stub(:title => "Foo", :body => "Lorem ipsum...")
-      WikiDocument.stubs(:find_by_title).with("Foo").returns(@wiki_document)
+      @wiki_document = mock(:to_param => "Foo", :title => "Foo", :body => "Lorem ipsum...")
+      WikiDocument.stub!(:find_by_title).with("Foo").and_return(@wiki_document)
 
-      get :show, :title => "Foo"
+      get :show, :id => "Foo"
     end
 
     specify { response.should render_template('show') }

@@ -19,4 +19,10 @@ describe WikiDocument do
     end
   end
 
+  describe "#to_param" do
+    it "delegates to title" do
+      subject.to_param.should == subject.title
+    end
+  end
+
 end

@@ -5,7 +5,7 @@ class WikiController < ApplicationController
   end
 
   def show
-    @wiki_document = WikiDocument.find_by_title(params[:title])
+    @wiki_document = WikiDocument.find_by_title(params[:id])
   end
   
   def new
@@ -13,7 +13,7 @@ class WikiController < ApplicationController
   end
   
   def edit 
-    @wiki_document = WikiDocument.find(params[:id])
+    @wiki_document = WikiDocument.find_by_title(params[:id])
   end
   
   def create
@@ -28,7 +28,7 @@ class WikiController < ApplicationController
   end
   
   def update
-    @wiki_document = WikiDocument.find(params[:id])
+    @wiki_document = WikiDocument.find_by_title(params[:id])
     if @wiki_document.update_attributes(params[:wiki_document])
       flash[:notice] = "Document has been updated!"
       redirect_to wiki_path @wiki_document.title
@@ -39,7 +39,7 @@ class WikiController < ApplicationController
   end
   
   def destroy
-    @wiki_document = WikiDocument.find(params[:id])
+    @wiki_document = WikiDocument.find_by_title(params[:id])
     if @wiki_document.delete
       flash[:notice] = "Document has been deleted!"
       redirect_to root_path

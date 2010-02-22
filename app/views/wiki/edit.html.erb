@@ -1,4 +1,4 @@
-<% form_for :wiki_document, :url=>"/wiki/#{@wiki_document.id}", :html=>{:method=>:put} do |f| %>
+<% form_for :wiki_document, :url => wiki_path(@wiki_document), :html=>{:method=>:put} do |f| %>
   <%= render :partial=> 'wiki_document_form', :object=> f %>
   <%= f.submit "Update Document" %>
 <% end %>

@@ -14,11 +14,11 @@ Then /^document is published on the homepage$/ do
 end
 
 Given /^a document that I have authored in the past exists$/ do
-  WikiDocument.create! :title=>"My love", :body=>"Is bacon."
+  WikiDocument.create! :title=>"MyLove", :body=>"Is bacon."
 end
 
 When /^I edit the document$/ do
-  visit edit_wiki_path(WikiDocument.find_by_title("My love"))
+  visit edit_wiki_path(WikiDocument.find_by_title("MyLove"))
   fill_in :wiki_document_body, :with=>"Is Still Bacon."
   click_button "Update Document"
 end
