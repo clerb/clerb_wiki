@@ -5,3 +5,7 @@ end
 When /^I visit the wiki page for "([^\"]*)"$/ do |document_title|
   visit "/wiki/%s" % [document_title]
 end
+
+When /^I visit the page "([^\"]*)"$/ do |path|
+  visit path
+end

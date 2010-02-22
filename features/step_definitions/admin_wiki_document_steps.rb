@@ -26,3 +26,8 @@ end
 Then /^the latest version is published on the homepage$/ do
   response_body.should contain "Is Still Bacon."
 end
+
+When /^I change the document titled "([^\"]*)" to have the body "([^\"]*)"$/ do |title, body|
+  document = WikiDocument.find_by_title(title)
+  document.update_attribute :body, body
+end
