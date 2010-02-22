@@ -44,4 +44,12 @@ describe WikiDocument do
     end
   end
 
+  describe "#title" do
+    it "is required"
+    it "can contain alpha numeric characters"
+    it "must start with a capital letter"
+    it "cannot have punctuation"
+    it "cannot have white space"
+  end
+
 end
