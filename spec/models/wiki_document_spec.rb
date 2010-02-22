@@ -19,37 +19,30 @@ describe WikiDocument do
 
   describe "#title" do
     it "is required" do
-      @wiki_document.title = nil
-      @wiki_document.should_not be_valid
+      subject.title = nil
+      subject.should_not be_valid
     end
 
-    it "can contain alpha numeric charaters" do
-      @wiki_document.title = "ABCD1234"
-      @wiki_document.should be_valid
+    it "can contain alpha numeric characters" do
+      subject.title = "Abcd1234"
+      subject.should be_valid
     end
 
     it "must start with a capital letter" do
-      @wiki_document.title = "abcd1234"
-      @wiki_document.should_not be_valid
+      subject.title = "abcd1234"
+      subject.should_not be_valid
     end
 
     it "cannot have punctuation" do
-      @wiki_document.title = "Abcd.1234"
-      @wiki_document.should_not be_valid
+      subject.title = "abcd.1234"
+      subject.should_not be_valid
     end
 
     it "cannot have white space" do
-      @wiki_document.title = "Abcd 1234"
-      @wiki_document.should_not be_valid
+      subject.title = "Abcd 1234"
+      subject.should_not be_valid
     end
-  end
 
-  describe "#title" do
-    it "is required"
-    it "can contain alpha numeric characters"
-    it "must start with a capital letter"
-    it "cannot have punctuation"
-    it "cannot have white space"
   end
 
 end
