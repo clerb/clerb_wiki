@@ -56,7 +56,9 @@ describe WikiDocument do
     end
 
     it "destroys dependents" do
-      pending
+      version = subject.versions.first
+      subject.destroy
+      WikiDocumentVersion.find_by_id(version.id).should be_nil
     end
 
     describe "#number" do
